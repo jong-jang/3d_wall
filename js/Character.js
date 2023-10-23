@@ -30,4 +30,14 @@ function Character(info) {
 	document.querySelector('.stage').appendChild(this.mainElem);
 
 	this.mainElem.style.left = `${info.xPos}%`;
+	this.init();
 }
+
+Character.prototype = {
+	constructor: Character,
+	init: function () {
+		window.addEventListener('scroll', () => {
+			this.mainElem.classList.add('running');
+		});
+	},
+};
