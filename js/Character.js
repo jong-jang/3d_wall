@@ -34,7 +34,7 @@ function Character(info) {
 	this.scrollState = false;
 	// 바로 이전(마지막) 스크롤 위치
 	this.lastScrollTop = 0;
-	this.speed = 0.3;
+	this.speed = info.speed;
 	this.xPos = info.xPos;
 	this.direction;
 	// 좌우 이동 중인지 아닌지
@@ -90,7 +90,8 @@ Character.prototype = {
 
 		window.addEventListener('keyup', function () {
 			self.mainElem.classList.remove('running');
-			this.cancelAnimationFrame(self.rafId);
+			cancelAnimationFrame(self.rafId);
+			self.runningState = false;
 		});
 	},
 	run: function (self) {
